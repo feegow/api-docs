@@ -1,17 +1,3 @@
----
-title: API Feegow v.1.0
-language_tabs:
-  - http: HTTP
-toc_footers:
-  - >-
-    <a href="https://www.feegowclinic.com.br/">feegow clinic</a>
-includes: []
-search: false
-highlight_theme: darkula
-headingLevel: 2
-
----
-
 # Autorização
 
 Para realizar qualquer tipo de requisição (GET, POST) nos endpoints da API você precisa de uma chave de autorização.
