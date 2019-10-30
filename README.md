@@ -1,3 +1,17 @@
+---
+title: API Feegow v.1.0
+language_tabs:
+  - http: HTTP
+toc_footers:
+  - >-
+    <a href="https://www.feegowclinic.com.br/">feegow clinic</a>
+includes: []
+search: false
+highlight_theme: darkula
+headingLevel: 2
+
+---
+
 # Autorização
 
 Para realizar qualquer tipo de requisição (GET, POST) nos endpoints da API você precisa de uma chave de autorização.
@@ -18,7 +32,7 @@ Para utilizar o Token nas requisições basta adiciona-lo ao header com a chave 
 
 > Exemplo Request
 ```http
-GET http://clinic5.feegow.com.br/components/public/api/company/list-unity
+GET https://api.feegow.com.br/api/company/list-unity
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -42,7 +56,9 @@ x-access-token: "SEUTOKEN"
                 "telefone_1": "(21) 1111-1111",
                 "telefone_2": "(21) 2222-2222",
                 "email_1": "josebaroni@feegow.com.br",
-                "email_2": "maiavinicius@feegow.com.br"
+                "email_2": "maiavinicius@feegow.com.br",
+                "complementos": "7 andar",
+                "mapa": null
             }
         ],
         "unidades": [
@@ -57,7 +73,9 @@ x-access-token: "SEUTOKEN"
                 "telefone_1": "(21) 1111-1111",
                 "telefone_2": "(21) 2222-2222",
                 "email_1": "josebaroni@feegow.com.br",
-                "email_2": "maiavinicius@feegow.com.br"
+                "email_2": "maiavinicius@feegow.com.br",
+                "complementos": null,
+                "mapa": "https://goo.gl/maps/jKAAAA8QQny"
             }
         ]
     }
@@ -80,7 +98,7 @@ Lista as informações de unidades e matriz da sua clínica.
 
 > Exemplo Request
 ```http
-GET http://clinic5.feegow.com.br/components/public/api/company/list-local
+GET https://api.feegow.com.br/api/company/list-local
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -184,7 +202,7 @@ x-access-token: "SEUTOKEN"
 
 `GET /company/list-local`
 
-Lista os locais relacionados 
+Lista os locais relacionados
 
 
 <h3 id="addPet-parameters">Respostas</h3>
@@ -201,7 +219,7 @@ Lista os locais relacionados
 
 > Exemplo Request
 ```http
-GET http://clinic5.feegow.com.br/components/public/api/reports/list
+GET https://api.feegow.com.br/api/reports/list
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -246,7 +264,7 @@ Lista os relatórios disponíveis para utilização.
 
 > Exemplo Request
 ```http
-POST http://clinic5.feegow.com.br/components/public/api/reports/generate
+POST https://api.feegow.com.br/api/reports/generate
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -309,7 +327,7 @@ x-access-token: "SEUTOKEN"
 
 `POST /reports/generate`
 
-Gera um relatório específico. 
+Gera um relatório específico.
 
 <h3 id="addPet-parameters">Parâmetros</h3>
 
@@ -334,7 +352,7 @@ Existe um limite de 60 dias entre o intervalo das datas para qualquer relatório
 
 > Exemplo Request
 ```http
-GET http://clinic5.feegow.com.br/components/public/api/reports/get-filters
+GET https://api.feegow.com.br/api/reports/get-filters
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -349,7 +367,7 @@ x-access-token: "SEUTOKEN"
 
 `GET /reports/get-filters`
 
-Obter filtros disponíveis para um relatório. 
+Obter filtros disponíveis para um relatório.
 
 <h3 id="addPet-parameters">Parâmetros</h3>
 
@@ -370,7 +388,7 @@ Obter filtros disponíveis para um relatório.
 
 > Exemplo Request
 ```http
-GET http://clinic5.feegow.com.br/components/public/api/professional/list
+GET https://api.feegow.com.br/api/professional/list
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -431,7 +449,7 @@ O caminho para utilizar o campo foto é
 
 > Exemplo Request
 ```http
-GET http://clinic5.feegow.com.br/components/public/api/professional/search
+GET https://api.feegow.com.br/api/professional/search
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -504,7 +522,7 @@ Lista as informações e especialidades do profissional informado.
 
 > Exemplo Request
 ```http
-GET http://clinic5.feegow.com.br/components/public/api/professional/insurance
+GET https://api.feegow.com.br/api/professional/insurance
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -556,7 +574,7 @@ Lista todos convênios aceitos por um profissional específico.
 
 > Exemplo Request
 ```http
-GET http://clinic5.feegow.com.br/components/public/api/patient/search
+GET https://api.feegow.com.br/api/patient/search
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -654,7 +672,7 @@ Busca informações de paciente específico.
 
 > Exemplo Request
 ```http
-GET http://clinic5.feegow.com.br/components/public/api/patient/list
+GET https://api.feegow.com.br/api/patient/list
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -730,7 +748,7 @@ Irá retornar 10 registros a partir do quinto.
 
 > Exemplo Request
 ```http
-POST http://clinic5.feegow.com.br/components/public/api/patient/create
+POST https://api.feegow.com.br/api/patient/create
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -793,7 +811,7 @@ Caso o CPF já esteja cadastrado é retornado o paciente_id
 
 > Exemplo Request
 ```http
-GET http://clinic5.feegow.com.br/components/public/api/patient/list-sources
+GET https://api.feegow.com.br/api/patient/list-sources
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -827,7 +845,7 @@ Lista todas origens.
 
 > Exemplo Request
 ```http
-GET http://clinic5.feegow.com.br/components/public/api/patient/list-privates
+GET https://api.feegow.com.br/api/patient/list-privates
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -864,7 +882,7 @@ Lista todas tabelas particulares.
 
 > Exemplo Request
 ```http
-GET http://clinic5.feegow.com.br/components/public/api/specialties/list
+GET https://api.feegow.com.br/api/specialties/list
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -909,7 +927,7 @@ Lista todas especialidades disponíveis para agendamento.
 
 > Exemplo Request
 ```http
-GET http://clinic5.feegow.com.br/components/public/api/financial/list-suppliers
+GET https://api.feegow.com.br/api/financial/list-suppliers
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -960,7 +978,7 @@ Lista os fornecedores da clínica.
 
 > Exemplo Request
 ```http
-GET http://clinic5.feegow.com.br/components/public/api/financial/search-supplier
+GET https://api.feegow.com.br/api/financial/search-supplier
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -1015,7 +1033,7 @@ Busca informações de um fornecedor específico.
 
 > Exemplo Request
 ```http
-GET http://clinic5.feegow.com.br/components/public/api/financial/list-medical-transfer
+GET https://api.feegow.com.br/api/financial/list-medical-transfer
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -1071,7 +1089,7 @@ Busca a listagem de repasses.
 
 > Exemplo Request
 ```http
-GET http://clinic5.feegow.com.br/components/public/api/financial/list-invoice
+GET https://api.feegow.com.br/api/financial/list-invoice
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -1175,7 +1193,7 @@ Lista informações de contas no sistema.
 
 > Exemplo Request
 ```http
-GET http://clinic5.feegow.com.br/components/public/api/procedures/list
+GET https://api.feegow.com.br/api/procedures/list
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -1236,7 +1254,7 @@ Lista todos procedimentos e seus valores, os valores são determinados de acordo
 
 > Exemplo Request
 ```http
-GET http://clinic5.feegow.com.br/components/public/api/procedures/types
+GET https://api.feegow.com.br/api/procedures/types
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -1283,13 +1301,258 @@ Busca todos os tipos de procedimento. Essa identificação é utilizada em outro
 |200|sucesso|Operação bem sucedida|
 
 
+<h1 id="proposals">Propostas</h1>
+
+## Listar propostas por paciente
+
+> Exemplo Request
+```http
+GET https://api.feegow.com.br/api/proposal/list
+Host: api.feegow.com.br
+Content-Type: application/json
+x-access-token: "SEUTOKEN"
+
+```
+
+> Parâmetros
+```json
+{
+    "paciente_id": 15
+}
+
+```
+
+> Exemplo Resposta
+```json
+{
+    "success": true,
+    "content": [
+        {
+            "proposal_id": 14,
+            "proposal_date": "2019-03-13",
+            "value": 850,
+            "proposer_id": 13052,
+            "proposer_name": "José da Silva",
+            "proposer_role": "Profissional",
+            "status": "Aguardando aprovação do cliente",
+            "private_table_name": null,
+            "procedimentos": {
+                "label": "Exames",
+                "data": [
+                    {
+                        "procedimento_id": 2,
+                        "nome": "ECG",
+                        "valor": 750
+                    },
+                    {
+                        "procedimento_id": 17,
+                        "nome": "Hemograma",
+                        "valor": 100
+                    }
+                ]
+            },
+            "unidade": {
+                "unidade_id" : 6,
+                "nome_fantasia": "Filial",
+                "cnpj": "11.111.111.0001-16",
+                "endereco": "Estrada do Guanumbi",
+                "cep": "22745-200",
+                "numero": "000",
+                "bairro": "Freguesia (Jacarepaguá)",
+                "telefone_1": "(21) 1111-1111",
+                "telefone_2": "(21) 2222-2222",
+                "email_1": "josebaroni@feegow.com.br",
+                "email_2": "maiavinicius@feegow.com.br",
+                "complementos": "",
+                "mapa": "https://goo.gl/maps/jKThTS8QQny"
+            }
+        }
+    ]
+}
+```
+
+`GET /proposal/list`
+
+Lista todas propostas feitas para um paciente e seus valores, os valores são determinados de acordo com o valor dos parâmetros enviados na solicitação. <br>
+**Os valores são tratados em reais (R$).**
+
+<h3 id="addPet-parameters">Parâmetros</h3>
+
+|Parâmetro|Tipo|Descrição
+|---|---|---|
+|**<a href="#patient">paciente_id</a>**|numeric|Identificação do paciente|
+
+<h3 id="addPet-parameters">Respostas</h3>
+
+|Código|Tipo|Descrição
+|---|---|---|
+|200|sucesso|Operação bem sucedida|
+
+
+## Criar proposta
+
+> Exemplo Request
+```http
+POST https://api.feegow.com.br/api/proposal/create
+Host: api.feegow.com.br
+Content-Type: application/json
+x-access-token: "SEUTOKEN"
+
+```
+
+> Parâmetros
+```json
+{
+    "proposer_id": 3531,
+    "paciente_id": 4412,
+    "unidade_id": 21,
+    "status_id": 5,
+    "proposal_date": "12-03-2018",
+    "procedimentos": [
+        {
+            "procedimento_id": 17,
+            "quantidade": 2,
+            "valor": 1111,
+            "desconto": 111,
+            "descricao": "Aplicação na clínica"
+        },
+        {
+            "procedimento_id": 17,
+            "quantidade": 3,
+            "valor": 3211,
+            "desconto": 2211,
+            "descricao": "Aplicação em casa"
+        },
+        {
+            "procedimento_id": 35,
+            "quantidade": 3,
+            "valor": 1411,
+            "desconto": 411,
+            "descricao": "Tratamento"
+        },
+        {
+            "procedimento_id": 1,
+            "quantidade": 1,
+            "valor": 1121,
+            "desconto": 121,
+            "descricao": "Consulta"
+        }
+    ]
+}
+
+```
+
+<h3 id="addPet-parameters">Parâmetros</h3>
+
+|Parâmetro|Tipo|Descrição
+|---|---|---|
+|**<a href="#professional">proposer_id</a>**|numeric|Identificação do profissional|
+|**<a href="#patient">paciente_id</a>**|numeric|Identificação do paciente|
+|**<a href="#proposal-status-list">status_id</a>**|numeric|Identificação do status da proposta|
+|**<a href="#company">unidade_id</a> <br> *(opcional)***|numeric|Identificação da unidade da proposta|
+|**proposal_date**|array|Lista com objetos definindo os <a href="#procedures">procedimentos</a> ofertados na proposta|
+|**<a href="#proposal-procedures-details">procedimentos</a> <br> *(deve conter pelo menos um objeto)***|array|Lista com objetos definindo os <a href="#procedures">procedimentos</a> ofertados na proposta|
+
+<h4 id="proposal-procedures-details">Parâmetros dos procedimentos</h4>
+
+|Parâmetro|Tipo|Descrição
+|---|---|---|
+|**<a href="#procedures">procedimento_id</a>**|numeric|Identificação do procedimento|
+|**quantidade** <br> *(opcional)*|numeric|Quantidade de procedimentos a serem passados|
+|**valor** <br> *(opcional)*|numeric|Custo total deste procedimento|
+|**desconto** <br> *(opcional)*|numeric|Desconto total oferecido ao procedimento|
+|**descricao** <br> *(opcional)*|string|Campo para descrever quaisquer detalhes do procedimento nesta proposta|
+
+<h4 id="proposal-status-list">Lista de status</h4>
+
+|id|status|
+|--|--|
+|1|Aguardando aprovação do cliente|
+|2|Aprovada pelo cliente|
+|3|Rejeitada pelo cliente|
+|4|Aguardando aprovação de financiamento|
+|5|Executada|
+
+<h3 id="addPet-parameters">Respostas</h3>
+
+> Exemplo Resposta
+```json
+{
+    "success": true,
+    "content": {
+        "proposal_id": 25
+    }
+}
+```
+
+`GET /proposals/create`
+
+Cria uma proposta definindo a lista de procedimentos com seus valores e descontos. <br>
+**Os valores são tratados em reais (R$).**
+
+<h3 id="addPet-parameters">Respostas</h3>
+
+|Código|Tipo|Descrição
+|---|---|---|
+|200|sucesso|Operação bem sucedida|
+
+## Mudar status da proposta
+
+> Exemplo Request
+```http
+POST https://api.feegow.com.br/api/proposal/change-status
+Host: api.feegow.com.br
+Content-Type: application/json
+x-access-token: "SEUTOKEN"
+
+```
+
+> Parâmetros
+```json
+{
+    "proposal_id": 24,
+    "status_id": 3
+}
+
+```
+
+<h3 id="addPet-parameters">Parâmetros</h3>
+
+|Parâmetro|Tipo|Descrição
+|---|---|---|
+|**<a href="#professional">proposal_id</a>**|numeric|Identificação do profissional|
+|**<a href="#proposal-status-list">status_id</a>**|numeric|Identificação do status da proposta|
+
+<h3 id="addPet-parameters">Respostas</h3>
+
+> Exemplo Resposta
+```json
+{
+    "success": true,
+    "content": {
+        "content": "Status atualizado para: Rejeitada pelo cliente"
+    }
+}
+```
+
+`GET /proposals/change-status`
+
+Modifica o status de uma proposta. <br>
+
+<h3 id="addPet-parameters">Respostas</h3>
+
+|Código|Tipo|Descrição
+|---|---|---|
+|200|sucesso|Operação bem sucedida|
+
+
 <h1 id="insurance">Convênios</h1>
 
 ## Listar convênios
 
 > Exemplo Request
 ```http
-GET http://clinic5.feegow.com.br/components/public/api/insurance/list
+GET https://api.feegow.com.br/api/insurance/list
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -1348,7 +1611,7 @@ Busca todos convênios aceitos e seus respectivos planos.
 
 > Exemplo Request
 ```http
-POST http://clinic5.feegow.com.br/components/public/pabx/new-event
+POST https://api.feegow.com.br/pabx/new-event
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -1402,7 +1665,7 @@ Registra um novo evento.
 
 > Exemplo Request
 ```http
-GET http://clinic5.feegow.com.br/components/public/api/appoints/status
+GET https://api.feegow.com.br/api/appoints/status
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -1478,12 +1741,50 @@ Lista todos os tipos de status para o agendamento.
 |---|---|---|
 |200|sucesso|Operação bem sucedida|
 
+## Atualizar status
+
+> Exemplo Request
+
+```http
+GET https://api.feegow.com.br/api/appoints/statusUpdate
+Host: api.feegow.com.br
+Content-Type: application/json
+x-access-token: "SEUTOKEN"
+
+```
+>Parâmetros
+```json
+{
+  "AgendamentoID": 100,
+  "StatusID": "7",
+  "Obs": "Paciente confirmou o comparecimento."
+}
+```
+
+>Exemplo Resposta
+```json
+{
+    "success": true,
+    "content": {
+        "msg": "Agendamento alterado com sucesso"
+    }
+}
+```
+
+Atualiza o status e inseri uma nota na agenda.
+
+|Parâmentro|Tipo|Descrição
+|---|---|---|
+|AgendamentoID|numeric|Identificação do agendamento|
+|StatusID|numeric|Identificação do status
+|Obs|string|Observação da alteração do status
+
 
 ## Lista motivos
 
 > Exemplo Request
 ```http
-GET http://clinic5.feegow.com.br/components/public/api/appoints/motives
+GET https://api.feegow.com.br/api/appoints/motives
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -1505,7 +1806,7 @@ x-access-token: "SEUTOKEN"
             "id": 2,
             "motivo": "Solicitado pelo profissional"
         }
-        
+
     ]
 }
 ```
@@ -1524,7 +1825,7 @@ Lista todos os motivos para reagendamento ou cancelamento.
 
 > Exemplo Request
 ```http
-GET http://clinic5.feegow.com.br/components/public/api/appoints/list-channel
+GET https://api.feegow.com.br/api/appoints/list-channel
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -1564,7 +1865,7 @@ Lista todos canais de agendamento disponíveis.
 
 > Exemplo Request
 ```http
-GET http://clinic5.feegow.com.br/components/public/api/appoints/search
+GET https://api.feegow.com.br/api/appoints/search
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -1613,6 +1914,7 @@ x-access-token: "SEUTOKEN"
 }
 ```
 
+
 `GET /appoints/search`
 
 Lista agendamentos por filtros.
@@ -1642,7 +1944,7 @@ Lista agendamentos por filtros.
 
 > Exemplo Request
 ```http
-GET http://clinic5.feegow.com.br/components/public/api/appoints/available-schedule
+GET https://api.feegow.com.br/api/appoints/available-schedule
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -1816,7 +2118,7 @@ Pode ser filtrado por unidade e profissional, possui um período de data para pe
 
 > Exemplo Request
 ```http
-POST http://clinic5.feegow.com.br/components/public/api/appoints/new-appoint
+POST https://api.feegow.com.br/api/appoints/new-appoint
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -1882,7 +2184,7 @@ Cria um novo agendamento.
 
 > Exemplo Request
 ```http
-POST http://clinic5.feegow.com.br/components/public/api/appoints/cancel-appoint
+POST https://api.feegow.com.br/api/appoints/cancel-appoint
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
@@ -1930,7 +2232,7 @@ Cancela um agendamento existente.
 
 > Exemplo Request
 ```http
-POST http://clinic5.feegow.com.br/components/public/api/appoints/reschedule
+POST https://api.feegow.com.br/api/appoints/reschedule
 Host: api.feegow.com.br
 Content-Type: application/json
 x-access-token: "SEUTOKEN"
