@@ -25,6 +25,13 @@ Content-Type: application/json
 x-access-token: "SEUTOKEN"
 
 ```
+> Exemplo Parâmetros
+```json
+{
+  "endereco": "avenida das americas 3500, barra da tijuca,RJ",
+  "cep": "24315-000"
+}
+```
 
 > Exemplo Resposta
 ```json
@@ -45,7 +52,8 @@ x-access-token: "SEUTOKEN"
                 "email_1": "josebaroni@feegow.com.br",
                 "email_2": "maiavinicius@feegow.com.br",
                 "complementos": "7 andar",
-                "mapa": null
+                "mapa": null,
+                "distancia_km": 1.25455
             }
         ],
         "unidades": [
@@ -62,7 +70,8 @@ x-access-token: "SEUTOKEN"
                 "email_1": "josebaroni@feegow.com.br",
                 "email_2": "maiavinicius@feegow.com.br",
                 "complementos": null,
-                "mapa": "https://goo.gl/maps/jKAAAA8QQny"
+                "mapa": "https://goo.gl/maps/jKAAAA8QQny",
+                "distancia_km": 51.25455
             }
         ]
     }
@@ -74,9 +83,15 @@ x-access-token: "SEUTOKEN"
 
 Lista as informações de unidades e matriz da sua clínica.
 
+<h3 id="addPet-parameters">Parâmetros</h3>
+
+|Parâmetro|Tipo|Descrição
+|---|---|---|
+|**endereco** <br> *(opcional)*|string|Endereço escrito por extenso|
+|**cep** <br> *(opcional)*|string|22000-000|
 
 <h3 id="addPet-parameters">Respostas</h3>
-
+|**distancia_km** <br> |string|Mostra a distancia em kilometros do endereço inserido no parametro cep ou endereco |
 |Código|Tipo|Descrição
 |---|---|---|
 |200|sucesso|Operação bem sucedida|
@@ -730,6 +745,55 @@ Irá retornar 10 registros a partir do quinto.
 |---|---|---|
 |200|sucesso|Operação bem sucedida|
 
+## Listar dependentes
+
+> Exemplo Request
+```http
+GET https://api.feegow.com.br/api/patient/list-dependents
+Host: api.feegow.com.br
+Content-Type: application/json
+x-access-token: "SEUTOKEN"
+
+```
+
+> Parâmetros
+```json
+{
+  "paciente_id": 5
+}
+
+```
+
+> Exemplo Resposta
+```json
+{
+    "success": true,
+    "content": [
+        {
+            "id": 1,
+            "Nome": "LITTLE JONH DOE",
+            "ReponsavelFinanceiro": ""
+        },
+        {
+            "id": 4,
+            "Nome": "JONES DOE",
+            "ReponsavelFinanceiro": "S"
+        }
+    ]
+}
+
+```
+
+`GET /patient/list-dependents`
+
+Lista todos dependentes cadastrados para um paciente.
+
+<h3 id="addPet-parameters">Respostas</h3>
+
+|Código|Tipo|Descrição
+|---|---|---|
+|200|sucesso|Operação bem sucedida|
+
 
 ## Criar paciente
 
@@ -793,6 +857,72 @@ Cria um novo paciente e retorna o paciente_id.
 <aside class="warning">
 Caso o CPF já esteja cadastrado é retornado o paciente_id
 </aside>
+
+
+## Editar paciente
+
+> Exemplo Request
+```http
+POST https://api.feegow.com.br/api/patient/edit
+Host: api.feegow.com.br
+Content-Type: application/json
+x-access-token: "SEUTOKEN"
+
+```
+
+> Parâmetros
+```json
+{
+  "paciente_id": 6655,
+  "nome_completo": "JOSE RENATO BARONI",
+  "cpf" : "11111111111",
+  "data_nascimento" : "03-09-1998",
+  "genero" : "M",
+  "telefone" : "2127678745",
+  "email" : "josebaroni@feegow.com.br",
+  "celular": "21997678745"
+}
+
+```
+
+> Exemplo Resposta
+```json sucesso
+{
+    "success": true,
+    "content": "Paciente atualizado"
+}
+```
+```json erro
+{
+    "success": false,
+    "content": "Paciente não atualizado"
+}
+```
+
+`POST /patient/edit`
+
+Editar novo paciente e retorno do status.
+
+<h3 id="addPet-parameters">Parâmetros</h3>
+
+|Parâmetro|Tipo|Descrição
+|---|---|---|
+|**paciente_id**|numeric|Id do paciente|
+|**nome_completo** <br> *(opcional)*|string|Nome do paciente|
+|**cpf** <br> *(opcional)*|numeric|CPF do paciente, 11 digitos <br> *sem pontos e hífen*|
+|**email** <br> *(opcional)*|string|E-mail do paciente|
+|**data_nascimento** <br> *(opcional)*|date|Data de nascimento do paciente <br>*(dd-mm-yyyy)*|
+|**genero** <br> *(opcional)*|string|M = Masculino <br> F = Feminino|
+|**telefone** <br> *(opcional)*|string|Telefone do paciente|
+|**celular** <br> *(opcional)*|string|celular do paciente|
+
+<h3 id="addPet-parameters">Respostas</h3>
+
+|Código|Tipo|Descrição
+|---|---|---|
+|200|sucesso|Operação bem sucedida|
+
+
 
 ## Listar origens
 
@@ -1885,7 +2015,9 @@ x-access-token: "SEUTOKEN"
             "procedimento_id": 3,
             "status_id": 1,
             "local_id": 0,
-            "profissional_id": 1
+            "profissional_id": 1,
+            "unidade_id": 1,
+            "nome_fantasia": "Filial 1"
         },
         {
             "agendamento_id": 35,
@@ -1894,8 +2026,10 @@ x-access-token: "SEUTOKEN"
             "paciente_id": 100003,
             "procedimento_id": 3,
             "status_id": 1,
-            "local_id": 0,
-            "profissional_id": 1
+            "local_id": 5,
+            "profissional_id": 3,
+            "unidade_id": 2,
+            "nome_fantasia": "Filial 2"
         }
     ]
 }
