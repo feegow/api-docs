@@ -1023,11 +1023,68 @@ x-access-token: "SEUTOKEN"
     ]
 }
 
+
+
+
 ```
 
 `GET /specialties/list`
 
 Lista todas especialidades disponíveis para agendamento.
+
+
+<h3 id="addPet-parameters">Respostas</h3>
+
+|Código|Tipo|Descrição
+|---|---|---|
+|200|sucesso|Operação bem sucedida|
+
+
+
+
+
+## checar eligibilidade do paciente
+
+> Exemplo Request
+```http
+GET https://api.feegow.com.br/api/patient/check-eligibility/
+Host: api.feegow.com.br
+Content-Type: application/json
+x-access-token: "SEUTOKEN"
+
+```
+> Parâmetros
+```json
+{
+  "tipo": "cpf",
+  "numero": "12314525478"
+}
+
+```
+
+> Exemplo Resposta
+```json
+{
+    "success": true,
+    "content": [
+       {
+          "dados":[
+            {
+              "permiteDesconto":true
+            }
+          ]
+        }
+    ]
+}
+
+
+
+
+```
+
+`GET /api/patient/check-eligibility`
+
+checa o status do cartão de todos do cpf ou matricula do paciente.
 
 
 <h3 id="addPet-parameters">Respostas</h3>
